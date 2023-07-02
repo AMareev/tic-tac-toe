@@ -8,23 +8,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /*transform: scale(0);*/
-    opacity: 0;
-    transition: 0.5s;
 }
 
-.active {
-    opacity: 1;
-    /*transform: scale(1);*/
-}
 .modalContent {
     padding: 20px;
     border-radius: 12px;
     background-color: white;
     height: 200px;
     width: 200px;
-    transform: scale(0.5);
-    transition: 0.4s all;
 
     display: flex;
     flex-wrap: wrap;
@@ -33,10 +24,8 @@
     font-size: 20px;
 
 }
+
 .modalContent button {
-    /*height: 50px;*/
     font-size: 20px;
-}
-.modalContent.active {
-    transform: scale(1);
+    flex-basis: 100%;
 }

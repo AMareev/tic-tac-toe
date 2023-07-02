@@ -8,6 +8,8 @@ const MainContainer = () => {
     const [scoreZ, setScoreZ] = useState([]);
     const [currentTurn, setCurrentTurn] = useState('X');
     const [winner, setWinner] = useState('');
+    const cells = Array(9).fill().map(_ => '');
+    const [cellsState, setCellsState] = useState(cells)
 
     const VICTORY_NUMBERS = [
         [0, 1, 2],
@@ -21,12 +23,15 @@ const MainContainer = () => {
     ]
 
     const checkWinner = (gamer) => {
+        // console.log(scoreZ)
         if (gamer === 'X') {
             setWinner(() => {
                 if (VICTORY_NUMBERS.some((condition) =>
                     condition.every((c) =>
                         scoreX.includes(c)))) {
                     return 'Крестики'
+                } else if (scoreX.length === 5) {
+                    return 'Ничья'
                 }
             })
 
@@ -45,6 +50,8 @@ const MainContainer = () => {
     return (
         <>
             <ModalContainer
+                setCellsState={setCellsState}
+                cells={cells}
                 setWinner={setWinner}
                 winner={winner}
                 setScoreX={setScoreX}
@@ -57,7 +64,8 @@ const MainContainer = () => {
                 scoreX={scoreX}
             />
             <CellsContainer
-                winner={winner}
+                cellsState={cellsState}
+                setCellsState={setCellsState}
                 checkWinner={checkWinner}
                 setCurrentTurn={setCurrentTurn}
                 currentTurn={currentTurn}

@@ -1,16 +1,19 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import CellsLayout from "./CellsLayout";
 
 
-const CellsContainer = ({
-                            setScoreZ, setScoreX, currentTurn,
-                            setCurrentTurn, checkWinner, winner
-                        }) => {
-
-
-    const cells = Array(9).fill().map(_ => '');
-    const [cellsState, setCellsState] = useState(cells)
+const CellsContainer = (
+    {
+        setScoreZ,
+        setScoreX,
+        currentTurn,
+        setCurrentTurn,
+        checkWinner,
+        setCellsState,
+        cellsState
+    }
+) => {
 
 
     const onCLickCell = (index) => {
@@ -18,8 +21,8 @@ const CellsContainer = ({
             prevState[index] = currentTurn;
             return [...prevState]
         });
-
-        currentTurn === 'X' ? setScoreX((old) => [...old, index]) : setScoreZ((old) => [...old, index]);
+        currentTurn === 'X' && setScoreX((old) => [...old, index])
+        currentTurn === '0' && setScoreZ((old) => [...old, index])
 
         setCurrentTurn((prevTurn) => prevTurn === 'X' ? '0' : 'X')
     }
@@ -29,16 +32,16 @@ const CellsContainer = ({
         const xCount = cellsState.filter((item) => item === 'X').length
         const zCount = cellsState.filter((item) => item === '0').length
 
-        if (xCount >= 3 && currentTurn === '0') checkWinner('X');
-        if (zCount >= 3 && currentTurn === 'X') checkWinner('Z');
+        if (xCount < 3 && zCount < 3) return;
 
-    }, [cellsState])
+        currentTurn === '0' && checkWinner('X');
+        currentTurn === 'X' && checkWinner('Z');
 
-    useEffect(() => {
-        if (winner) {
-            setCellsState(() => cells)
-        }
-    }, [winner])
+
+
+    }, [cellsState, checkWinner, currentTurn])
+
+
     return (
         <>
             <CellsLayout
@@ -50,11 +53,12 @@ const CellsContainer = ({
     );
 };
 CellsContainer.propTypes = {
-    setScoreZ: PropTypes.array,
-    setScoreX: PropTypes.array,
+    cellsState: PropTypes.array,
+    setCellsState: PropTypes.func,
+    setScoreZ: PropTypes.func,
+    setScoreX: PropTypes.func,
     currentTurn: PropTypes.string,
     setCurrentTurn: PropTypes.func,
     checkWinner: PropTypes.func,
-    winner: PropTypes.string
 };
 export default CellsContainer;

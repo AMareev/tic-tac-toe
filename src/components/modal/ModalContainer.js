@@ -2,7 +2,16 @@ import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import ModalLayout from "./ModalLayout";
 
-const ModalContainer = ({winner, setCurrentTurn, setScoreX, setScoreZ, setWinner}) => {
+const ModalContainer = (
+    {
+        winner,
+        setCurrentTurn,
+        setScoreX,
+        setScoreZ,
+        setWinner,
+        setCellsState, cells
+    }
+) => {
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -19,6 +28,7 @@ const ModalContainer = ({winner, setCurrentTurn, setScoreX, setScoreZ, setWinner
         setScoreZ(() => []);
         setScoreX(() => []);
         setWinner(() => '');
+        setCellsState(() => cells)
         closeModal()
     }
 
@@ -42,6 +52,8 @@ const ModalContainer = ({winner, setCurrentTurn, setScoreX, setScoreZ, setWinner
     );
 };
 ModalContainer.propTypes = {
+    setCellsState: PropTypes.func,
+    cells: PropTypes.array,
     winner: PropTypes.string,
     setCurrentTurn: PropTypes.func,
     setScoreX: PropTypes.func,

@@ -9,7 +9,7 @@ const CellsLayout = ({cellsState, onCLickCell}) => {
             <div className={s.cellContainer}>
 
                 {cellsState.map((text,index) =>
-                    <div className={s.cells}
+                    <div className={text ? `${s.cells} ${s.disabled}` : s.cells}
                             onClick={() => onCLickCell(index)}
                             key={index}
                             id={s[index+1]}
