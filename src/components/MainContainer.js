@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import MainLayout from "./MainLayout";
 import CellsContainer from "./cells/CellsContainer";
-import RoleContainer from "./rolles/RoleContainer";
+import ModalContainer from "./modal/ModalContainer";
 
 const MainContainer = () => {
     const [scoreX, setScoreX] = useState([]);
@@ -49,15 +49,23 @@ const MainContainer = () => {
 
     return (
         <>
+            <ModalContainer
+                setWinner = {setWinner}
+                winner = {winner}
+                setScoreX = {setScoreX}
+                setScoreZ = {setScoreZ}
+                setCurrentTurn = {setCurrentTurn}
+
+            />
             <MainLayout
                 currentTurn={currentTurn}
                 scoreX={scoreX}
                 scoreZ={scoreZ}
                 winnerName={winner}
             />
-            <RoleContainer
-                setCurrentTurn={setCurrentTurn}
-            />
+            {/*<RoleContainer*/}
+            {/*    setCurrentTurn={setCurrentTurn}*/}
+            {/*/>*/}
             <CellsContainer
                 winner = {winner}
                 checkWinner={checkWinner}

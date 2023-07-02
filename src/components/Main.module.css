@@ -8,8 +8,12 @@
     margin: 0 auto;
     /*width: 40%;*/
 }
-.header button {
+.header .turn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*margin-left: 0 auto;*/
     height: 33%;
-    width: 50%;
+    width: 100%;
     font-size: 30px;
 }

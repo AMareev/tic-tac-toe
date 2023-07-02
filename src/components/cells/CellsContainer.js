@@ -30,7 +30,11 @@ const CellsContainer = ({ setScoreZ, setScoreX, currentTurn, setCurrentTurn,
 
     }, [cellsState])
 
-
+    useEffect(() => {
+        if(winner) {
+            setCellsState(() => cells)
+        }
+    }, [winner])
     return (
         <>
             <CellsLayout
