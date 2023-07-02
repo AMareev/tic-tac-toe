@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import s from './Modal.module.css'
 
 const ModalLayout = ({closeBtn, modalIsOpen, winner}) => {
@@ -13,5 +14,9 @@ const ModalLayout = ({closeBtn, modalIsOpen, winner}) => {
         </>
     );
 };
-
+ModalLayout.propTypes = {
+    closeBtn: PropTypes.func,
+    modalIsOpen: PropTypes.bool,
+    winner: PropTypes.string
+}
 export default ModalLayout;

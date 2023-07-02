@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import s from './Cells.module.css';
 
 const CellsLayout = ({cellsState, onCLickCell}) => {
@@ -21,5 +22,8 @@ const CellsLayout = ({cellsState, onCLickCell}) => {
         </>
     );
 };
-
+CellsLayout.propTypes = {
+    cellsState: PropTypes.array,
+    onCLickCell: PropTypes.func
+};
 export default CellsLayout;

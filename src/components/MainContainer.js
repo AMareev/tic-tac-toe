@@ -8,10 +8,7 @@ const MainContainer = () => {
     const [scoreZ, setScoreZ] = useState([]);
     const [currentTurn, setCurrentTurn] = useState('X');
     const [winner, setWinner] = useState('');
-    // const [count, setCount] = useState(0)
 
-    console.log('X',scoreX)
-    console.log('Z', scoreZ)
     const VICTORY_NUMBERS = [
         [0, 1, 2],
         [3, 4, 5],
@@ -24,9 +21,7 @@ const MainContainer = () => {
     ]
 
     const checkWinner = (gamer) => {
-        console.log('checlwinner', gamer)
         if (gamer === 'X') {
-
             setWinner(() => {
                 if (VICTORY_NUMBERS.some((condition) =>
                     condition.every((c) =>
@@ -50,27 +45,20 @@ const MainContainer = () => {
     return (
         <>
             <ModalContainer
-                setWinner = {setWinner}
-                winner = {winner}
-                setScoreX = {setScoreX}
-                setScoreZ = {setScoreZ}
-                setCurrentTurn = {setCurrentTurn}
+                setWinner={setWinner}
+                winner={winner}
+                setScoreX={setScoreX}
+                setScoreZ={setScoreZ}
+                setCurrentTurn={setCurrentTurn}
 
             />
             <MainLayout
                 currentTurn={currentTurn}
                 scoreX={scoreX}
-                scoreZ={scoreZ}
-                winnerName={winner}
             />
-            {/*<RoleContainer*/}
-            {/*    setCurrentTurn={setCurrentTurn}*/}
-            {/*/>*/}
             <CellsContainer
-                winner = {winner}
+                winner={winner}
                 checkWinner={checkWinner}
-                victoryNumbers={VICTORY_NUMBERS}
-                setWinner={setWinner}
                 setCurrentTurn={setCurrentTurn}
                 currentTurn={currentTurn}
                 setScoreZ={setScoreZ}

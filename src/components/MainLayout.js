@@ -1,9 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import s from "./Main.module.css";
 
-const MainLayout = ({scoreX, scoreZ, winnerName, currentTurn}) => {
+const MainLayout = ({scoreX, currentTurn}) => {
 
-    console.log(scoreX)
     return (
         <>
             <div className={s.header}>
@@ -15,5 +15,8 @@ const MainLayout = ({scoreX, scoreZ, winnerName, currentTurn}) => {
         </>
     );
 };
-
+MainLayout.propTypes = {
+  scoreX: PropTypes.array,
+  currentTurn: PropTypes.string
+};
 export default MainLayout;

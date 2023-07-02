@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import PropTypes from 'prop-types';
 import ModalLayout from "./ModalLayout";
 
 const ModalContainer = ({winner, setCurrentTurn, setScoreX, setScoreZ, setWinner}) => {
@@ -40,5 +41,11 @@ const ModalContainer = ({winner, setCurrentTurn, setScoreX, setScoreZ, setWinner
         </>
     );
 };
-
+ModalContainer.propTypes = {
+    winner: PropTypes.string,
+    setCurrentTurn: PropTypes.func,
+    setScoreX: PropTypes.func,
+    setScoreZ: PropTypes.func,
+    setWinner: PropTypes.func
+};
 export default ModalContainer;
