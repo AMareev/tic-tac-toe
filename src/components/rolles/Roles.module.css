@@ -1,0 +1,15 @@
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    width: 200px;
+    margin: 0 auto;
+    /*width: 40%;*/
+}
+.header button {
+    height: 33%;
+    width: 50%;
+    font-size: 30px;
+}
